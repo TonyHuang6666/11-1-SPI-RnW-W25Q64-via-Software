@@ -1,21 +1,21 @@
 #include "stm32f10x.h"
 #include "Delay.h"
 #define Delay_Time 1
+
 void SPI_Initilize(void)
 {
     //1.初始化SPI引脚
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
     GPIO_InitTypeDef GPIO_InitStructure;
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4 |GPIO_Pin_5 |GPIO_Pin_7;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;//推挽输出
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_7;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;  // 推挽输出
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_Init(GPIOA, &GPIO_InitStructure);
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;//浮空输入
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;  // 浮空输入
     GPIO_Init(GPIOA, &GPIO_InitStructure);
     //2.SS引脚置高电平，SPI总线空闲状态
     GPIO_SetBits(GPIOA, GPIO_Pin_4);
-
 }
 
 //以下函数为对引脚操作的封装和改名，方便移植
@@ -53,7 +53,7 @@ void SPI_Start(void)//起始条件
     SPI_SS(0);//SS引脚拉低
 }
 
-void SPI_Pause(void)//终止条件
+void SPI_Stop(void)//终止条件
 {
     SPI_SS(1);//SS引脚拉高
     SPI_SCK(0);//SCK引脚拉低
@@ -61,7 +61,7 @@ void SPI_Pause(void)//终止条件
 
 uint8_t SPI_ExchangeByte(uint8_t TxData)//交换一个字节
 {
-    uint8_t i, RxData = 0x00;
+    uint8_t i;
     for(i=0;i<8;i++)
     {
         //当i=0时，SS下降沿，MISO与MOSI都移出数据
@@ -76,9 +76,8 @@ uint8_t SPI_ExchangeByte(uint8_t TxData)//交换一个字节
         SPI_SCK(1);//SCK引脚拉高
         //MISO读取数据
         if(SPI_MISO())
-            RxData |= 0x01;
-        RxData <<= 1;
+            TxData |= 0x01;
         SPI_SCK(0);//SCK引脚拉低
     }
-    return RxData;
+    return TxData;
 }
