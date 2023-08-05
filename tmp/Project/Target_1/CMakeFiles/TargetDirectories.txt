@@ -1,0 +1,4 @@
+D:/OneDrive - email.szu.edu.cn/Codes/Github insiders/Examples/11-1 SPI RnW W25Q64 via Software/tmp/Project/Target_1/CMakeFiles/database.dir
+D:/OneDrive - email.szu.edu.cn/Codes/Github insiders/Examples/11-1 SPI RnW W25Q64 via Software/tmp/Project/Target_1/CMakeFiles/Project.dir
+D:/OneDrive - email.szu.edu.cn/Codes/Github insiders/Examples/11-1 SPI RnW W25Q64 via Software/tmp/Project/Target_1/CMakeFiles/edit_cache.dir
+D:/OneDrive - email.szu.edu.cn/Codes/Github insiders/Examples/11-1 SPI RnW W25Q64 via Software/tmp/Project/Target_1/CMakeFiles/rebuild_cache.dir
