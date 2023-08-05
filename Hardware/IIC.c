@@ -31,14 +31,6 @@ void IIC_W_SDA(uint8_t BitValue)//写SDA引脚电平
     Delay_us(Delay_Time);
 }
 
-uint8_t IIC_R_SCL(void)//读SCL引脚电平
-{
-    uint8_t BitValue;
-    BitValue = GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_10);
-    Delay_us(Delay_Time);
-    return BitValue;
-}
-
 uint8_t IIC_R_SDA(void)//读SDA引脚电平
 {
     uint8_t BitValue;
