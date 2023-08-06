@@ -61,6 +61,9 @@ void Page_Program(uint32_t Page_Address, uint8_t *DataArray, uint16_t Count)
     SPI_Stop();
     W25Q64_WaitBusy();//事后等待
 }
+/*
+如果非要跨页写入则先计算要跨几页，然后分批次写入，最后封装成函数
+*/
 
 //W25Q64扇区擦除
 void Sector_Erase(uint32_t Sector_Address)
