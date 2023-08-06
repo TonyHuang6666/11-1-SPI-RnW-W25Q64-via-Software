@@ -10,8 +10,8 @@ int main(void)
 {
 	OLED_Init();
 	W25Q64_Init();
-	Sector_Erase(0x000000);
-	Page_Program(0x000000,DataArray,8);
+	//Sector_Erase(0x000000);
+	//Page_Program(0x000000,DataArray,8);
 	W25Q64_ReadData(0x000000,ArrayRead,8);
 	OLED_ShowString(4,16,"T");
 	OLED_ShowHexNum(1,1,ArrayRead[0],2);
