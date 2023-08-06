@@ -28,7 +28,6 @@
 #define W25Q64_FAST_READ_QUAD_OUTPUT				0x6B
 #define W25Q64_FAST_READ_QUAD_IO					0xEB
 #define W25Q64_OCTAL_WORD_READ_QUAD_IO				0xE3
-
-#define W25Q64_DUMMY_BYTE							0xFF
+#define W25Q64_Trash_BYTE							0xFF
 
 #endif

@@ -1,6 +1,4 @@
 #include "stm32f10x.h"
-#include "Delay.h"
-#define Delay_Time 1
 
 void SPI_Initilize(void)
 {
@@ -22,26 +20,22 @@ void SPI_Initilize(void)
 void SPI_SS(uint8_t BitValue)//写SS引脚电平
 {
     GPIO_WriteBit(GPIOA, GPIO_Pin_4, (BitAction)BitValue);
-    Delay_us(Delay_Time);
 }
 
 void SPI_SCK(uint8_t BitValue)//写SCK引脚电平
 {
     GPIO_WriteBit(GPIOA, GPIO_Pin_5, (BitAction)BitValue);
-    Delay_us(Delay_Time);
 }
 
 void SPI_MOSI(uint8_t BitValue)//写MOSI引脚电平
 {
     GPIO_WriteBit(GPIOA, GPIO_Pin_7, (BitAction)BitValue);
-    Delay_us(Delay_Time);
 }
 
 uint8_t SPI_MISO(void)//读MISO引脚电平
 {
     uint8_t BitValue;
     BitValue = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_6);
-    Delay_us(Delay_Time);
     return BitValue;
 }
 
@@ -59,7 +53,7 @@ void SPI_Stop(void)//终止条件
     SPI_SCK(0);//SCK引脚拉低
 }
 
-uint8_t SPI_ExchangeByte(uint8_t TxData)//交换一个字节
+uint8_t SPI_ExchangeByte(uint8_t TxData)//交换一个字节:模式0
 {
     uint8_t i;
     for(i=0;i<8;i++)
