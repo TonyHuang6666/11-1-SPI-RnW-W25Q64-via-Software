@@ -12,7 +12,7 @@ int main(void)
 	W25Q64_Init();
 	Sector_Erase(0x000000);
 	Page_Program(0x0000FF,DataArray,8);
-	W25Q64_ReadData(0x0000FF,ArrayRead,8);
+	W25Q64_ReadData(0x000000,ArrayRead,8);
 	OLED_ShowString(4,16,"T");
 	OLED_ShowHexNum(1,1,ArrayRead[0],2);
 	OLED_ShowHexNum(1,3,ArrayRead[1],2);
